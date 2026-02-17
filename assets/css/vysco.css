@@ -669,6 +669,71 @@ ul {
     border-radius: 10px;
 }
 
+/* Current Project Carousel */
+.projects-carousel {
+    position: relative;
+    width: 100%;
+}
+
+.project-slide {
+    display: none;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.project-slide.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.project-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-control:hover {
+    background: var(--secondary-color);
+}
+
+.project-control.prev { left: -70px; }
+.project-control.next { right: -70px; }
+
+.project-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.p-dot {
+    width: 30px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.p-dot.active {
+    background: var(--secondary-color);
+    width: 60px;
+}
+
 /* Services Grid */
 .contact-form {
     background: #ffffff;

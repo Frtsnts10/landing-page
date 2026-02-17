@@ -132,20 +132,74 @@
                 <h2>Current Major Project</h2>
                 <div class="line-light"></div>
             </div>
-            <div class="current-project-content">
-                <div class="current-project-img">
-                    <img src="https://via.placeholder.com/800x500/0F2A44/ffffff?text=Major+Ongoing+Project" alt="Ongoing Project" onerror="this.src='https://via.placeholder.com/800x500/0F2A44/ffffff?text=Major+Ongoing+Project'">
+            
+            <div class="projects-carousel">
+                <!-- Project 1: Palm Oil -->
+                <div class="project-slide active">
+                    <div class="current-project-content">
+                        <div class="current-project-img">
+                            <img src="https://via.placeholder.com/800x500/0F2A44/ffffff?text=Palm+Oil+Mill+Extension" alt="Ongoing Project">
+                        </div>
+                        <div class="current-project-details">
+                            <span class="status-tag">Ongoing</span>
+                            <h3>60 TPH Palm Oil Mill Extension</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Kutai Kartanegara, East Kalimantan</p>
+                            <p>Expanding processing capacity with new civil and mechanical installation. This project demonstrates our dominance in palm oil mill infrastructure.</p>
+                            <ul class="project-highlights">
+                                <li><i class="fas fa-check"></i> Advanced Structural Fabrication</li>
+                                <li><i class="fas fa-check"></i> Complex Mechanical Commissioning</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="current-project-details">
-                    <span class="status-tag">Ongoing</span>
-                    <h3>60 TPH Palm Oil Mill Extension</h3>
-                    <p class="location"><i class="fas fa-map-marker-alt"></i> Kutai Kartanegara, East Kalimantan</p>
-                    <p>Expanding processing capacity with new civil and mechanical installation. This project demonstrates our dominance in palm oil mill infrastructure and our commitment to on-time delivery even in remote locations.</p>
-                    <ul class="project-highlights">
-                        <li><i class="fas fa-check"></i> Advanced Structural Fabrication</li>
-                        <li><i class="fas fa-check"></i> Complex Mechanical Commissioning</li>
-                        <li><i class="fas fa-check"></i> Strict Environmental Compliance</li>
-                    </ul>
+
+                <!-- Project 2: Toll Road -->
+                <div class="project-slide">
+                    <div class="current-project-content">
+                        <div class="current-project-img">
+                            <img src="https://via.placeholder.com/800x500/1e3a5f/ffffff?text=Toll+Road+Infrastructure" alt="Toll Road Project">
+                        </div>
+                        <div class="current-project-details">
+                            <span class="status-tag">Infrastructure</span>
+                            <h3>S-Link Harbour Toll Road</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Tanjung Priuk, Jakarta</p>
+                            <p>Major infrastructure development involving pile driving, concrete structures, and expressway surfacing to improve port logistics.</p>
+                            <ul class="project-highlights">
+                                <li><i class="fas fa-check"></i> Piling & Deep Foundations</li>
+                                <li><i class="fas fa-check"></i> Reinforced Concrete Superstructure</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Aisin -->
+                <div class="project-slide">
+                    <div class="current-project-content">
+                        <div class="current-project-img">
+                            <img src="https://via.placeholder.com/800x500/2c3e50/ffffff?text=Industrial+Factory+Construction" alt="Aisin Factory">
+                        </div>
+                        <div class="current-project-details">
+                            <span class="status-tag">Industrial</span>
+                            <h3>Aisin Indonesia Factory</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Karawang, West Java</p>
+                            <p>Construction of multi-functional industrial facility for automotive parts manufacturing. Focus on advanced flooring and heavy-load capacity.</p>
+                            <ul class="project-highlights">
+                                <li><i class="fas fa-check"></i> Epoxy Flooring Specialist</li>
+                                <li><i class="fas fa-check"></i> Industrial Steel Framework</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Carousel Controls -->
+                <button class="project-control prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="project-control next"><i class="fas fa-chevron-right"></i></button>
+                
+                <!-- Project Carousel Indicators -->
+                <div class="project-indicators">
+                    <span class="p-dot active"></span>
+                    <span class="p-dot"></span>
+                    <span class="p-dot"></span>
                 </div>
             </div>
         </div>
@@ -426,30 +480,57 @@
             navLinks.classList.toggle('active');
         });
 
-        // About Carousel Logic
-        const slides = document.querySelectorAll('.carousel-item');
-        const dots = document.querySelectorAll('.dot');
-        const prevBtn = document.querySelector('.carousel-control.prev');
-        const nextBtn = document.querySelector('.carousel-control.next');
-        let currentSlide = 0;
+        // Carousel Initialization Function
+        function initCarousel(config) {
+            const container = document.querySelector(config.container);
+            if (!container) return;
 
-        function showSlide(n) {
-            slides[currentSlide].classList.remove('active');
-            dots[currentSlide].classList.remove('active');
-            currentSlide = (n + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+            const slides = container.querySelectorAll(config.slides);
+            const dots = container.querySelectorAll(config.dots);
+            const prevBtn = container.querySelector(config.prev);
+            const nextBtn = container.querySelector(config.next);
+            let currentSlide = 0;
+
+            function showSlide(n) {
+                slides[currentSlide].classList.remove('active');
+                if (dots.length) dots[currentSlide].classList.remove('active');
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+                if (dots.length) dots[currentSlide].classList.add('active');
+            }
+
+            if (prevBtn) prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+            if (nextBtn) nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => showSlide(index));
+            });
+
+            if (config.autoPlay) {
+                setInterval(() => showSlide(currentSlide + 1), config.interval || 5000);
+            }
         }
 
-        prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
-        nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
-        
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => showSlide(index));
+        // Initialize About Carousel
+        initCarousel({
+            container: '.about-carousel',
+            slides: '.carousel-item',
+            dots: '.dot',
+            prev: '.prev',
+            next: '.next',
+            autoPlay: true
         });
 
-        // Auto transition
-        setInterval(() => showSlide(currentSlide + 1), 5000);
+        // Initialize Projects Carousel
+        initCarousel({
+            container: '.projects-carousel',
+            slides: '.project-slide',
+            dots: '.p-dot',
+            prev: '.prev',
+            next: '.next',
+            autoPlay: true,
+            interval: 7000
+        });
 
         // Custom Smooth Scroll with Easing
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
