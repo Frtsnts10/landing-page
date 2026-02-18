@@ -349,6 +349,64 @@ ul {
     color: var(--secondary-color);
 }
 
+/* On-going Projects Table */
+.ongoing-table-wrapper {
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.ongoing-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.ongoing-table th, .ongoing-table td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.ongoing-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.ongoing-table tr:hover {
+    background-color: #fcfcfc;
+}
+
+.ongoing-table td {
+    font-size: 0.9rem;
+    vertical-align: top;
+}
+
+.ongoing-table td small {
+    display: block;
+    color: #666;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+.category-row {
+    background-color: #f8f9fa !important;
+}
+
+.category-row td {
+    font-weight: 700;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    font-size: 0.85rem !important;
+    letter-spacing: 1px;
+    padding: 12px 20px !important;
+}
+
 /* Heavy Equipment */
 .equipment-list {
     display: grid;
