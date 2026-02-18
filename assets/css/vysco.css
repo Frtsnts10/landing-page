@@ -490,6 +490,22 @@ ul {
     border-radius: 4px;
     background: #000;
     height: 250px;
+    transition: transform 0.3s;
+}
+
+.portfolio-item.static {
+    height: auto;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-item.static .portfolio-img-container {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background: #000;
 }
 
 .portfolio-img {
@@ -498,6 +514,11 @@ ul {
     object-fit: cover;
     opacity: 0.7;
     transition: 0.3s;
+}
+
+.portfolio-item.static .portfolio-img {
+    height: 200px;
+    opacity: 1;
 }
 
 .portfolio-item:hover .portfolio-img {
@@ -513,6 +534,17 @@ ul {
     padding: 20px;
     background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
     color: white;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.portfolio-item.static .portfolio-overlay.show-on-hover {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.portfolio-item.static:hover .portfolio-overlay.show-on-hover {
+    opacity: 1;
 }
 
 .portfolio-overlay h4 {
@@ -524,6 +556,22 @@ ul {
 .portfolio-overlay p {
     font-size: 0.9rem;
     color: #ffd;
+}
+
+.portfolio-static-info {
+    padding: 15px;
+    background: white;
+}
+
+.portfolio-static-info h4 {
+    margin-bottom: 5px;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.portfolio-static-info p {
+    font-size: 0.85rem;
+    color: #666;
 }
 
 /* Clients */
