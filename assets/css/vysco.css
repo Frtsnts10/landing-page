@@ -1023,3 +1023,133 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* Project Detail Gallery Modal */
+.project-modal-content {
+    max-width: 900px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.project-details-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-gallery-section {
+    background-color: #000;
+    position: relative;
+}
+
+.main-image-container {
+    position: relative;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+}
+
+.main-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-nav:hover {
+    background: var(--secondary-color);
+}
+
+.gallery-nav.prev { left: 20px; }
+.gallery-nav.next { right: 20px; }
+
+.thumbnail-row {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: #111;
+    overflow-x: auto;
+    justify-content: center;
+}
+
+.thumb-item {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0.5;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.thumb-item:hover, .thumb-item.active {
+    opacity: 1;
+    border-color: var(--secondary-color);
+}
+
+.project-info-section {
+    padding: 30px;
+    background: white;
+}
+
+.project-info-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.project-info-section .line {
+    margin: 10px 0 20px 0 !important;
+}
+
+.spec-item {
+    margin-bottom: 10px;
+    display: flex;
+    font-size: 0.95rem;
+}
+
+.spec-label {
+    font-weight: 700;
+    width: 100px;
+    color: var(--primary-color);
+}
+
+.spec-value {
+    color: #444;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .main-image-container {
+        height: 300px;
+    }
+    .thumb-item {
+        width: 60px;
+        height: 45px;
+    }
+}
