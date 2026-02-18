@@ -183,14 +183,20 @@ ul {
 .section-header.header-with-link {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     flex-wrap: wrap;
     text-align: left;
+    max-width: none;
+    margin-bottom: 40px;
+}
+
+.header-main {
+    flex: 1;
 }
 
 .section-header.header-with-link .line {
-    margin: 10px 0 20px 0;
-    width: 100%;
+    margin: 10px 0 0 0;
+    width: 60px;
 }
 
 .show-more {
@@ -201,7 +207,6 @@ ul {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 20px;
 }
 
 .show-more:hover {
