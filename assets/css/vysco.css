@@ -738,8 +738,31 @@ ul {
 .contact-form {
     background: #ffffff;
     padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.form-status {
+    margin-top: 15px;
+    padding: 10px;
     border-radius: 4px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    font-size: 0.9rem;
+    display: none;
+    text-align: center;
+}
+
+.form-status.success {
+    display: block;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-status.error {
+    display: block;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }
 
 .form-group {

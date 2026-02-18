@@ -15,6 +15,17 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/vysco.css">
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Replace with your actual Public Key from EmailJS
+            emailjs.init({
+              publicKey: "YOUR_PUBLIC_KEY",
+            });
+        })();
+    </script>
 </head>
 <body>
 
@@ -444,17 +455,18 @@
                         <p>info@vyscoindopratama.com</p>
                     </div>
                 </div>
-                <form class="contact-form">
+                <form class="contact-form" id="contact-form">
                     <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
+                        <input type="text" name="user_name" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
+                        <input type="email" name="user_email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Message / Project Details" rows="5" required></textarea>
+                        <textarea name="message" placeholder="Message / Project Details" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn-primary">Send Message</button>
+                    <button type="submit" class="btn-primary" id="submit-btn">Send Message</button>
+                    <div id="form-status" class="form-status"></div>
                 </form>
             </div>
         </div>
@@ -571,6 +583,42 @@
                 }
             });
         });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const formStatus = document.getElementById('form-status');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'Sending...';
+                formStatus.className = 'form-status';
+                formStatus.innerText = '';
+
+                // Replace these with your actual IDs from EmailJS
+                const serviceID = 'YOUR_SERVICE_ID';
+                const templateID = 'YOUR_TEMPLATE_ID';
+
+                emailjs.sendForm(serviceID, templateID, this)
+                    .then(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = 'Send Message';
+                        formStatus.classList.add('success');
+                        formStatus.innerText = 'Thank you! Your message has been sent successfully.';
+                        contactForm.reset();
+                    }, (err) => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = 'Send Message';
+                        formStatus.classList.add('error');
+                        formStatus.innerText = 'Oops! Something went wrong. Please try again later.';
+                        console.error('EmailJS Error:', err);
+                    });
+            });
+        }
     </script>
 </body>
 </html>
