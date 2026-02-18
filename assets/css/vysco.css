@@ -180,6 +180,21 @@ ul {
     margin-right: auto;
 }
 
+.line {
+    width: 60px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    margin: 15px auto;
+}
+
+.line-light {
+    width: 60px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 15px auto;
+    opacity: 0.6;
+}
+
 .section-header.header-with-link {
     display: flex;
     justify-content: space-between;
