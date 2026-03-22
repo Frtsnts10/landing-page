@@ -307,7 +307,7 @@ ul {
 /* Services Grid */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
@@ -524,7 +524,7 @@ ul {
 /* Projects Portfolio */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
@@ -1112,6 +1112,10 @@ footer {
     .project-control        { width: 40px; height: 40px; }
     .project-control.prev   { left: 10px; }
     .project-control.next   { right: 10px; }
+
+    /* ── Services & Projects: 2 columns on tablet ── */
+    .services-grid  { grid-template-columns: repeat(2, 1fr); }
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* MOBILE ONLY — max-width: 768px
@@ -1178,10 +1182,9 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* ── Featured Projects: single column on mobile ── */
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-    }
+    /* ── Services & Projects: 1 column on mobile ── */
+    .services-grid  { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
 
     /* ── On-going Projects: full width on mobile ── */
     .current-project-content {
