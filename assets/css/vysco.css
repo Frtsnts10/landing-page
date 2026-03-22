@@ -14,6 +14,11 @@
     --text-light: #ffffff;
 }
 
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
@@ -1075,6 +1080,20 @@ footer {
 
     .hero h1 {
         font-size: 2.6rem;
+    }
+
+    /* Project Carousel Controls for Tablet/Mobile */
+    .project-control {
+        width: 40px;
+        height: 40px;
+    }
+
+    .project-control.prev {
+        left: 10px;
+    }
+
+    .project-control.next {
+        right: 10px;
     }
 }
 
