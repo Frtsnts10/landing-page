@@ -405,11 +405,7 @@ ul {
     text-align: center;
 }
 
-@media (max-width: 768px) {
-    .equipment-list {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
-    }
-}
+
 
 .equipment-item {
     background: #ffffff;
@@ -1041,9 +1037,16 @@ footer {
     color: var(--secondary-color);
 }
 
-/* Responsive */
-/* Responsive Navigation */
+/* ===================================================
+   RESPONSIVE BREAKPOINTS
+   =================================================== */
+
+/* TABLET & MOBILE — max-width: 1100px
+   Sidebar nav, stacked grids, adjusted carousel
+-------------------------------------------------- */
 @media (max-width: 1100px) {
+
+    /* ── Navigation Sidebar ── */
     .nav-links {
         display: flex;
         flex-direction: column;
@@ -1061,86 +1064,74 @@ footer {
         transition: right 0.4s ease-in-out;
         gap: 25px;
     }
-    
-    .nav-links.active {
-        right: 0;
-    }
 
-    .nav-btn {
-        display: none; 
-    }
+    .nav-links.active { right: 0; }
+    .nav-btn         { display: none; }
+    .hamburger       { display: block; }
+    .nav-close       { display: block; }
 
-    .hamburger {
-        display: block;
-    }
+    /* ── Section Spacing ── */
+    .section { padding: 60px 0; }
 
-    .nav-close {
-        display: block;
-    }
+    /* ── Hero ── */
+    .hero h1 { font-size: 2.6rem; }
 
-    .hero h1 {
-        font-size: 2.6rem;
+    /* ── About Grid: stack vertically ── */
+    .about-grid {
+        grid-template-columns: 1fr;
     }
+    .about-image { order: -1; }
 
-    /* Project Carousel Controls for Tablet/Mobile */
-    .project-control {
-        width: 40px;
-        height: 40px;
+    /* ── Site Manager Grid: 3 columns on tablet ── */
+    .site-manager-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 15px;
     }
+    .sm-img { height: 180px !important; }
 
-    .project-control.prev {
-        left: 10px;
-    }
-
-    .project-control.next {
-        right: 10px;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.2rem;
-        line-height: 1.2;
-    }
-
+    /* ── Contact: flex column ── */
     .contact-wrapper {
         display: flex;
         flex-direction: column;
         gap: 30px;
     }
 
+    /* ── On-going Projects: flex column, centered ── */
     .current-project-content {
         display: flex;
         flex-direction: column;
-        width: calc(100% - 120px);
+        width: calc(100% - 100px);
         margin: 0 auto;
         padding: 20px;
         gap: 20px;
     }
+    .current-project-img     { width: 100%; }
+    .current-project-details { width: 100%; padding: 0; }
 
-    .current-project-img {
-        width: 100%;
-    }
-
-    .current-project-details {
-        width: 100%;
-        padding: 0;
-    }
+    /* ── Project Carousel Controls ── */
+    .project-control        { width: 40px; height: 40px; }
+    .project-control.prev   { left: 10px; }
+    .project-control.next   { right: 10px; }
 }
 
+/* MOBILE ONLY — max-width: 768px
+   Single-column layouts, carousels, reduced text
+-------------------------------------------------- */
 @media (max-width: 768px) {
-    .about-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .about-image {
-        order: -1;
-    }
-    
-    .section-header h2 {
-        font-size: 1.8rem;
-    }
 
+    /* ── Section Spacing ── */
+    .section { padding: 50px 0; }
+
+    /* ── Section Headers ── */
+    .section-header h2 { font-size: 1.8rem; }
+
+    /* ── Hero ── */
+    .hero h1 { font-size: 2rem; line-height: 1.2; }
+    .hero p  { font-size: 1rem; }
+
+    /* ── About image order already set at 1100px ── */
+
+    /* ── Site Manager: carousel mode on mobile ── */
     .site-manager-grid.sm-carousel {
         display: block;
         position: relative;
@@ -1169,9 +1160,7 @@ footer {
         z-index: 2;
     }
 
-    .sm-img {
-        height: 220px !important;
-    }
+    .sm-img { height: 220px !important; }
 
     .sm-dots {
         display: flex;
@@ -1182,41 +1171,24 @@ footer {
         z-index: 10;
     }
 
-    .sm-control {
-        display: block;
+    .sm-control { display: block; }
+
+    /* ── Equipment: 2 columns on mobile ── */
+    .equipment-list {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .section {
-        padding: 50px 0;
-    }
-
-    /* Hero Refinement */
-    .hero h1 {
-        font-size: 2.2rem;
-        line-height: 1.2;
-    }
-    
-    .hero p {
-        font-size: 1rem;
-    }
-
-    /* Projects Grid Refinement */
-    .projects-grid {
+    /* ── Featured Projects: single column on mobile ── */
+    .portfolio-grid {
         grid-template-columns: 1fr;
     }
+
+    /* ── On-going Projects: full width on mobile ── */
+    .current-project-content {
+        width: calc(100% - 80px);
+    }
 }
 
-/* Tablet View Adjustments */
-@media (min-width: 769px) and (max-width: 1100px) {
-    .site-manager-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 15px;
-    }
-    
-    .sm-img {
-        height: 180px !important;
-    }
-}
 
 /* Project Detail Gallery Modal */
 .project-modal-content {
