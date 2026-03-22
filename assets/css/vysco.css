@@ -39,7 +39,7 @@ ul {
 
 .container {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 15px;
 }
@@ -1084,7 +1084,31 @@ footer {
         line-height: 1.2;
     }
 
-    .about-grid, .contact-wrapper {
+    .contact-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .current-project-content {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .current-project-img {
+        width: 100%;
+    }
+
+    .current-project-details {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-grid {
         grid-template-columns: 1fr;
     }
     
@@ -1094,10 +1118,6 @@ footer {
     
     .section-header h2 {
         font-size: 1.8rem;
-    }
-
-    .current-project-content {
-        grid-template-columns: 1fr;
     }
 
     .site-manager-grid.sm-carousel {
