@@ -709,6 +709,21 @@ ul {
 .sm-control.prev { left: -10px; }
 .sm-control.next { right: -10px; }
 
+/* Desktop/Tablet Override for Site Manager Carousel Classes */
+@media (min-width: 769px) {
+    .site-manager-grid.sm-carousel .sm-card.carousel-item {
+        position: relative !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        height: auto !important;
+        display: flex !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        z-index: 1 !important;
+    }
+}
+
 .sm-card .team-info {
     padding: 15px !important;
 }
@@ -1102,6 +1117,13 @@ footer {
 
     .sm-control {
         display: block;
+    }
+}
+
+/* Tablet View Adjustments */
+@media (min-width: 769px) and (max-width: 1100px) {
+    .site-manager-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
     }
 }
 
