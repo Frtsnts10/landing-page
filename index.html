@@ -325,29 +325,41 @@
             </div>
             <div class="portfolio-grid">
                 <!-- Project 1: Maxxis -->
-                <a href="projects.html" class="portfolio-item">
+                <div class="portfolio-item clickable" 
+                     data-title="Maxxis International" 
+                     data-loc="Delta Mas Industrial Park, Cikarang"
+                     data-duration="Feb 2016 - Oct 2018"
+                     data-images="https://via.placeholder.com/800x500/0b1a2a/ffffff?text=Maxxis+1,https://via.placeholder.com/800x500/1e3a5f/ffffff?text=Maxxis+2,https://via.placeholder.com/800x500/2c3e50/ffffff?text=Maxxis+3,https://via.placeholder.com/800x500/0f2a44/ffffff?text=Maxxis+4,https://via.placeholder.com/800x500/142d4c/ffffff?text=Maxxis+5,https://via.placeholder.com/800x500/5e6a71/ffffff?text=Maxxis+6">
                     <img src="https://via.placeholder.com/400x300/0b1a2a/ffffff?text=Maxxis+International" alt="Maxxis Factory" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Maxxis International</h4>
                         <p>40 Ha Tire Manufacturing Complex</p>
                     </div>
-                </a>
+                </div>
                 <!-- Project 2: Astra Daihatsu -->
-                <a href="projects.html" class="portfolio-item">
+                <div class="portfolio-item clickable"
+                     data-title="Astra Daihatsu Motor"
+                     data-loc="SCS Industrial Estate, Karawang"
+                     data-duration="Aug 2011 - March 2015"
+                     data-images="https://via.placeholder.com/800x500/1e3a5f/ffffff?text=Daihatsu+1,https://via.placeholder.com/800x500/0b1a2a/ffffff?text=Daihatsu+2,https://via.placeholder.com/800x500/2c3e50/ffffff?text=Daihatsu+3,https://via.placeholder.com/800x500/0f2a44/ffffff?text=Daihatsu+4">
                     <img src="https://via.placeholder.com/400x300/1e3a5f/ffffff?text=Astra+Daihatsu+Motor" alt="Daihatsu Factory" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Astra Daihatsu Motor</h4>
                         <p>150 Ha New Factory Plant</p>
                     </div>
-                </a>
+                </div>
                 <!-- Project 3: Palm Oil Mill -->
-                <a href="projects.html" class="portfolio-item">
+                <div class="portfolio-item clickable"
+                     data-title="Benua Puhun Mill"
+                     data-loc="Kutai Kartanegara, East Kalimantan"
+                     data-duration="Dec 2010 - Nov 2011"
+                     data-images="https://via.placeholder.com/800x500/0f2a44/ffffff?text=Puhun+1,https://via.placeholder.com/800x500/1e3a5f/ffffff?text=Puhun+2">
                     <img src="https://via.placeholder.com/400x300/142d4c/ffffff?text=Palm+Oil+Mill" alt="Palm Oil Mill" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Benua Puhun Mill</h4>
                         <p>45/60 TPH Palm Oil Mill Construction</p>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
     </section>
@@ -543,6 +555,39 @@
         </div>
     </div>
 
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content project-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="project-details-container">
+                <div class="project-gallery-section">
+                    <div class="main-image-container">
+                        <button class="gallery-nav prev"><i class="fas fa-chevron-left"></i></button>
+                        <img id="modal-project-img" src="" alt="Project Image">
+                        <button class="gallery-nav next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div id="gallery-thumbnails" class="thumbnail-row">
+                        <!-- Thumbnails will be injected here -->
+                    </div>
+                </div>
+                <div class="project-info-section">
+                    <h2 id="modal-project-title"></h2>
+                    <div class="line"></div>
+                    <div class="project-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Location:</span>
+                            <span id="modal-project-loc" class="spec-value"></span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Duration:</span>
+                            <span id="modal-project-duration" class="spec-value"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Use inline script for simplicity as requested
         const hamburger = document.querySelector('.hamburger');
@@ -724,11 +769,11 @@
             ]
         };
 
-        // Modal Logic
-        const modal = document.getElementById("equipment-modal");
-        const modalTitle = document.getElementById("modal-title");
+        // --- Equipment Modal Logic ---
+        const equipModal = document.getElementById("equipment-modal");
+        const equipModalTitle = document.getElementById("modal-title");
         const modalBody = document.getElementById("modal-body");
-        const closeModal = document.querySelector(".close-modal");
+        const closeEquipModal = document.querySelector("#equipment-modal .close-modal");
         const equipmentItems = document.querySelectorAll(".equipment-item");
 
         equipmentItems.forEach(item => {
@@ -737,7 +782,7 @@
                 const data = equipmentData[category];
 
                 if (data) {
-                    modalTitle.innerText = category + " Fleet";
+                    equipModalTitle.innerText = category + " Fleet";
                     modalBody.innerHTML = "";
                     
                     data.forEach(row => {
@@ -751,18 +796,119 @@
                         modalBody.appendChild(tr);
                     });
 
-                    modal.style.display = "flex";
+                    equipModal.style.display = "flex";
                 }
             });
         });
 
-        closeModal.addEventListener("click", () => {
-            modal.style.display = "none";
+        closeEquipModal.addEventListener("click", () => {
+            equipModal.style.display = "none";
         });
 
+        // --- Project Modal Logic ---
+        const projModal = document.getElementById("project-modal");
+        const closeProjModal = document.querySelector("#project-modal .close-modal");
+        const projectItems = document.querySelectorAll(".portfolio-item.clickable");
+
+        // Elements to populate
+        const modalImg = document.getElementById("modal-project-img");
+        const modalTitle = document.getElementById("modal-project-title");
+        const modalLoc = document.getElementById("modal-project-loc");
+        const modalDuration = document.getElementById("modal-project-duration");
+        const thumbnailRow = document.getElementById("gallery-thumbnails");
+        const prevBtn = document.querySelector(".gallery-nav.prev");
+        const nextBtn = document.querySelector(".gallery-nav.next");
+
+        let currentImageIndex = 0;
+        let projectImages = [];
+
+        function updateMainImage(index) {
+            currentImageIndex = index;
+            modalImg.src = projectImages[currentImageIndex];
+            
+            // Update active thumbnail
+            document.querySelectorAll(".thumb-item").forEach((thumb, i) => {
+                thumb.classList.toggle("active", i === currentImageIndex);
+            });
+        }
+
+        projectItems.forEach(item => {
+            item.addEventListener("click", () => {
+                const title = item.getAttribute("data-title");
+                const loc = item.getAttribute("data-loc");
+                const duration = item.getAttribute("data-duration");
+                projectImages = item.getAttribute("data-images").split(",");
+
+                // Populate Text
+                modalTitle.innerText = title;
+                modalLoc.innerText = loc;
+                modalDuration.innerText = duration;
+
+                // Populate Gallery
+                thumbnailRow.innerHTML = "";
+                projectImages.forEach((src, index) => {
+                    const thumb = document.createElement("img");
+                    thumb.src = src;
+                    thumb.classList.add("thumb-item");
+                    if (index === 0) thumb.classList.add("active");
+                    thumb.addEventListener("click", () => updateMainImage(index));
+                    thumbnailRow.appendChild(thumb);
+                });
+
+                updateMainImage(0);
+
+                // Show modal
+                projModal.style.display = "flex";
+                document.body.style.overflow = "hidden";
+            });
+        });
+
+        // Gallery Navigation
+        prevBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            let newIndex = currentImageIndex - 1;
+            if (newIndex < 0) newIndex = projectImages.length - 1;
+            updateMainImage(newIndex);
+        });
+
+        nextBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            let newIndex = currentImageIndex + 1;
+            if (newIndex >= projectImages.length) newIndex = 0;
+            updateMainImage(newIndex);
+        });
+
+        // Close logic for Project Modal
+        closeProjModal.addEventListener("click", () => {
+            projModal.style.display = "none";
+            document.body.style.overflow = "auto";
+        });
+
+        // Global Modal Clicks (outside modal)
         window.addEventListener("click", (e) => {
-            if (e.target === modal) {
-                modal.style.display = "none";
+            if (e.target === equipModal) {
+                equipModal.style.display = "none";
+            }
+            if (e.target === projModal) {
+                projModal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        });
+
+        // ESC Key logic
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                if (equipModal.style.display === "flex") {
+                    equipModal.style.display = "none";
+                }
+                if (projModal.style.display === "flex") {
+                    projModal.style.display = "none";
+                    document.body.style.overflow = "auto";
+                }
+            }
+            if (projModal.style.display === "flex") {
+                if (e.key === "ArrowLeft") prevBtn.click();
+                if (e.key === "ArrowRight") nextBtn.click();
             }
         });
     </script>
