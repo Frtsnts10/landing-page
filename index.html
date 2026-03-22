@@ -423,6 +423,7 @@
                 <div class="leadership-row level-3">
                     <div class="level-title">Site Managers</div>
                     <div class="site-manager-grid sm-carousel">
+                        <button class="sm-control prev"><i class="fas fa-chevron-left"></i></button>
                         <div class="team-card sm-card carousel-item active">
                             <div class="team-img sm-img">
                                 <i class="fas fa-user-cog"></i>
@@ -468,6 +469,7 @@
                                 <span class="role">Papua</span>
                             </div>
                         </div>
+                        <button class="sm-control next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <!-- Site Manager Carousel Dots (Mobile Only) -->
                     <div class="carousel-dots sm-dots">
@@ -925,6 +927,8 @@
             container: '.sm-carousel',
             slides: '.sm-card',
             dots: '.sm-dots .dot',
+            prev: '.sm-control.prev',
+            next: '.sm-control.next',
             autoPlay: true,
             interval: 5000
         });

@@ -685,6 +685,30 @@ ul {
     background: var(--secondary-color);
 }
 
+/* Site Manager Carousel Controls */
+.sm-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(15, 42, 68, 0.5);
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: none;
+    transition: background 0.3s;
+}
+
+.sm-control:hover {
+    background: var(--secondary-color);
+}
+
+.sm-control.prev { left: -10px; }
+.sm-control.next { right: -10px; }
+
 .sm-card .team-info {
     padding: 15px !important;
 }
@@ -1038,7 +1062,7 @@ footer {
     .site-manager-grid.sm-carousel {
         display: block;
         position: relative;
-        height: 220px;
+        height: 360px;
         margin-bottom: 20px;
         grid-template-columns: none; /* override grid */
     }
@@ -1046,8 +1070,10 @@ footer {
     .sm-carousel .sm-card {
         position: absolute;
         top: 0;
-        left: 0;
+        left: 50%;
+        transform: translateX(-50%);
         width: 100%;
+        max-width: 320px;
         opacity: 0;
         transition: opacity 0.5s ease-in-out;
         pointer-events: none;
@@ -1061,8 +1087,16 @@ footer {
         z-index: 2;
     }
 
+    .sm-img {
+        height: 220px !important;
+    }
+
     .sm-dots {
         display: flex;
+    }
+
+    .sm-control {
+        display: block;
     }
 }
 
