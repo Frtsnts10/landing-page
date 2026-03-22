@@ -1112,6 +1112,8 @@ footer {
     .current-project-content {
         display: flex;
         flex-direction: column;
+        width: calc(100% - 120px);
+        margin: 0 auto;
         padding: 20px;
         gap: 20px;
     }
