@@ -709,21 +709,6 @@ ul {
 .sm-control.prev { left: -10px; }
 .sm-control.next { right: -10px; }
 
-/* Desktop/Tablet Override for Site Manager Carousel Classes */
-@media (min-width: 769px) {
-    .site-manager-grid.sm-carousel .sm-card.carousel-item {
-        position: relative !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        height: auto !important;
-        display: flex !important;
-        top: auto !important;
-        left: auto !important;
-        transform: none !important;
-        z-index: 1 !important;
-    }
-}
-
 .sm-card .team-info {
     padding: 15px !important;
 }
@@ -1077,12 +1062,12 @@ footer {
     .site-manager-grid.sm-carousel {
         display: block;
         position: relative;
-        height: 360px;
-        margin-bottom: 20px;
-        grid-template-columns: none; /* override grid */
+        height: 380px;
+        margin-bottom: 30px;
+        grid-template-columns: none;
     }
 
-    .sm-carousel .sm-card {
+    .sm-carousel .sm-carousel-item {
         position: absolute;
         top: 0;
         left: 50%;
@@ -1096,7 +1081,7 @@ footer {
         z-index: 1;
     }
 
-    .sm-carousel .sm-card.active {
+    .sm-carousel .sm-carousel-item.active {
         opacity: 1;
         pointer-events: auto;
         z-index: 2;
@@ -1109,7 +1094,7 @@ footer {
     .sm-dots {
         display: flex;
         position: absolute;
-        bottom: -40px;
+        bottom: -30px;
         left: 50%;
         transform: translateX(-50%);
         z-index: 10;
@@ -1118,12 +1103,36 @@ footer {
     .sm-control {
         display: block;
     }
+
+    .section {
+        padding: 50px 0;
+    }
+
+    /* Hero Refinement */
+    .hero h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* Projects Grid Refinement */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Tablet View Adjustments */
 @media (min-width: 769px) and (max-width: 1100px) {
     .site-manager-grid {
         grid-template-columns: repeat(3, 1fr) !important;
+        gap: 15px;
+    }
+    
+    .sm-img {
+        height: 180px !important;
     }
 }
 
