@@ -1093,6 +1093,11 @@ footer {
 
     .sm-dots {
         display: flex;
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
     }
 
     .sm-control {
