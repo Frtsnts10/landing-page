@@ -669,6 +669,22 @@ ul {
     color: #ccc;
 }
 
+/* Site Manager Carousel Dots */
+.sm-dots {
+    display: none;
+    margin-top: 20px;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sm-dots .dot {
+    background: rgba(15, 42, 68, 0.2);
+}
+
+.sm-dots .dot.active {
+    background: var(--secondary-color);
+}
+
 .sm-card .team-info {
     padding: 15px !important;
 }
@@ -1019,8 +1035,34 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .site-manager-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .site-manager-grid.sm-carousel {
+        display: block;
+        position: relative;
+        height: 220px;
+        margin-bottom: 20px;
+        grid-template-columns: none; /* override grid */
+    }
+
+    .sm-carousel .sm-card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        pointer-events: none;
+        background: #fff;
+        z-index: 1;
+    }
+
+    .sm-carousel .sm-card.active {
+        opacity: 1;
+        pointer-events: auto;
+        z-index: 2;
+    }
+
+    .sm-dots {
+        display: flex;
     }
 }
 

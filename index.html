@@ -422,8 +422,8 @@
                 <!-- Level 3: Site Managers -->
                 <div class="leadership-row level-3">
                     <div class="level-title">Site Managers</div>
-                    <div class="site-manager-grid">
-                        <div class="team-card sm-card">
+                    <div class="site-manager-grid sm-carousel">
+                        <div class="team-card sm-card carousel-item active">
                             <div class="team-img sm-img">
                                 <i class="fas fa-user-cog"></i>
                             </div>
@@ -432,7 +432,7 @@
                                 <span class="role">Sejiram</span>
                             </div>
                         </div>
-                        <div class="team-card sm-card">
+                        <div class="team-card sm-card carousel-item">
                             <div class="team-img sm-img">
                                 <i class="fas fa-user-cog"></i>
                             </div>
@@ -441,7 +441,7 @@
                                 <span class="role">Kaltim</span>
                             </div>
                         </div>
-                        <div class="team-card sm-card">
+                        <div class="team-card sm-card carousel-item">
                             <div class="team-img sm-img">
                                 <i class="fas fa-user-cog"></i>
                             </div>
@@ -450,7 +450,7 @@
                                 <span class="role">Kalteng</span>
                             </div>
                         </div>
-                        <div class="team-card sm-card">
+                        <div class="team-card sm-card carousel-item">
                             <div class="team-img sm-img">
                                 <i class="fas fa-user-cog"></i>
                             </div>
@@ -459,7 +459,7 @@
                                 <span class="role">Kalbar</span>
                             </div>
                         </div>
-                        <div class="team-card sm-card">
+                        <div class="team-card sm-card carousel-item">
                             <div class="team-img sm-img">
                                 <i class="fas fa-user-cog"></i>
                             </div>
@@ -468,6 +468,14 @@
                                 <span class="role">Papua</span>
                             </div>
                         </div>
+                    </div>
+                    <!-- Site Manager Carousel Dots (Mobile Only) -->
+                    <div class="carousel-dots sm-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
                     </div>
                 </div>
             </div>
@@ -910,6 +918,15 @@
                 if (e.key === "ArrowLeft") prevBtn.click();
                 if (e.key === "ArrowRight") nextBtn.click();
             }
+        });
+        
+        // --- Site Manager Carousel (Mobile ONLY) ---
+        initCarousel({
+            container: '.sm-carousel',
+            slides: '.sm-card',
+            dots: '.sm-dots .dot',
+            autoPlay: true,
+            interval: 5000
         });
     </script>
 </body>
